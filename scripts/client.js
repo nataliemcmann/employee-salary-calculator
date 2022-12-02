@@ -44,9 +44,9 @@ function renderEmployeeData(){
     for (let i = 0; i < employees.length; i++){
     $('#employeeData').append(`
     <tr>
-        <td>${employees[i].firstName}</td>
+        <td >${employees[i].firstName}</td>
         <td>${employees[i].lastName}</td>
-        <td>${employees[i].employeeID}</td>
+        <td id="employeeID">${employees[i].employeeID}</td>
         <td>${employees[i].jobTitle}</td>
         <td>${employees[i].annualSalary}</td>
         <td><button class="removeEmp">Delete</button></td>
@@ -68,6 +68,6 @@ function processEmployeeInputData(){
 }
 
 function deleteEmployee(){
-    //let empToRemove = $(this).siblings().val();
-    //console.log(empToRemove);
+    let empToRemove = $(this).siblings('#employeeID').val();
+    console.log(empToRemove);
 }

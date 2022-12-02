@@ -11,6 +11,7 @@ function onReady(){
     //click handler for submitting employee inputs
     $('#dataSubmit').on('click', handleDataSubmit);
     renderEmployeeData();
+    $('table').on('click', '.removeEmp', deleteEmployee)
 }
 
 //function to handle dataSubit click
@@ -39,16 +40,16 @@ let employees = [
 
 //render data to DOM
 function renderEmployeeData(){
-    $('td').empty();
+    $('#employeeData').empty();
     for (let i = 0; i < employees.length; i++){
-    $('#employeeDataTable').append(`
-    <tr class= "employeeData">
+    $('#employeeData').append(`
+    <tr>
         <td>${employees[i].firstName}</td>
         <td>${employees[i].lastName}</td>
         <td>${employees[i].employeeID}</td>
         <td>${employees[i].jobTitle}</td>
         <td>${employees[i].annualSalary}</td>
-        <td><button>Delete</button></td>
+        <td><button class="removeEmp">Delete</button></td>
     </tr>
     `)
     }
@@ -59,9 +60,14 @@ function processEmployeeInputData(){
     let newEmployee = {};
     newEmployee.firstName = $('#firstName').val();
     newEmployee.lastName = $('#lastName').val();
-    newEmployee.employeeID = Number($('#employeeID').val());
+    newEmployee.employeeID = $('#employeeID').val();
     newEmployee.jobTitle = $('#jobTitle').val();
     newEmployee.annualSalary = Number($('#annualSalary').val());
     employees.push(newEmployee);
     console.log(employees);
+}
+
+function deleteEmployee(){
+    //let empToRemove = $(this).siblings().val();
+    //console.log(empToRemove);
 }

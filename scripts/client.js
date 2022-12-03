@@ -27,14 +27,16 @@ let employees = [
     lastName: 'Marmesh',
     employeeID: 1234556,
     jobTitle: 'Therapist',
-    annualSalary: 40000
+    annualSalary: 40000,
+    monthlySalary: 3333.33
     },
     {
     firstName: 'Tracy',
     lastName: 'McMann',
     employeeID: 78910,
     jobTitle: 'Lead Mechanic',
-    annualSalary: 820000
+    annualSalary: 820000,
+    monthlySalary: 6833.33
     }
 ];
 
@@ -42,8 +44,10 @@ let employees = [
 let totalMonthlySalary = 0;
 let MaxTotalSalary = 20000;
 
-//render data to DOM
+//render employee data to DOM
 function renderEmployeeData(){
+     //reset total salary
+    totalMonthlySalary = 0;
     $('#employeeData').empty();
     for (let i = 0; i < employees.length; i++){
     $('#employeeData').append(`
@@ -55,7 +59,30 @@ function renderEmployeeData(){
         <td>$${employees[i].annualSalary}</td>
         <td><button class="removeEmp">Delete</button></td>
     </tr>
-    `)
+    `);
+    incrementMonthlySalary(employees[i].monthlySalary);
+    }
+    renderTotalSalary();
+    clearFields();
+}
+
+//clear input fields
+function clearFields(){
+$('#firstName').val('');
+$('#lastName').val('');
+$('#employeeID').val('');
+$('#jobTitle').val('');
+$('#annualSalary').val('');
+}
+//render total salary data to DOM
+function renderTotalSalary(){
+    //clear out span
+    $('#calculatedMonthlySalary').empty();
+    //append new salary total
+    $("#calculatedMonthlySalary").append(`
+    ${totalMonthlySalary}`);
+    if (totalMonthlySalary > MaxTotalSalary){
+        $("#calculatedMonthlySalary").css('background-color', 'red');
     }
 }
 
@@ -72,16 +99,31 @@ function processEmployeeInputData(){
     console.log(newEmployee.monthlySalary);
 }
 
+//function for adding to the monthly salary calculator
+function incrementMonthlySalary(empMonthlySalary){
+    //take employee monthly salary
+    //add that to total monthly salary variable
+    totalMonthlySalary += empMonthlySalary;
+}
+
 //function to hide employee on the DOM when clicked
 function deleteEmployee(){
     $(this).parent().parent().remove();
     //attempt to remove employee from state as a stretch goal
     //let empToRemove = $(this).siblings('#employeeID').val();
     //console.log(empToRemove);
+    //stretch goal should removed their salary from the total
+    //decrementMonthlySalary();
+    renderTotalSalary();
 }
 
 
-//function for adding to the monthly salary calculator
-function incrementMonthlySalary(annualSalary){
-    
-}
+
+//stretch goal: function for removing salary once employee is removed
+//function decrementMonthlySalary(empMonthlySalary){
+    //reset global variable
+    //take employee monthly salary
+    //add that to total monthly salary variable
+//    totalMonthlySalary -= empMonthlySalary;
+//}
+

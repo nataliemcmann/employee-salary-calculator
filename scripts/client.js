@@ -38,6 +38,10 @@ let employees = [
     }
 ];
 
+//declare global variables
+let totalMonthlySalary = 0;
+let MaxTotalSalary = 20000;
+
 //render data to DOM
 function renderEmployeeData(){
     $('#employeeData').empty();
@@ -63,12 +67,21 @@ function processEmployeeInputData(){
     newEmployee.employeeID = $('#employeeID').val();
     newEmployee.jobTitle = $('#jobTitle').val();
     newEmployee.annualSalary = Number($('#annualSalary').val());
+    newEmployee.monthlySalary = newEmployee.annualSalary/12;
     employees.push(newEmployee);
-    console.log(employees);
+    console.log(newEmployee.monthlySalary);
 }
 
+//function to hide employee on the DOM when clicked
 function deleteEmployee(){
     $(this).parent().parent().remove();
+    //attempt to remove employee from state as a stretch goal
     //let empToRemove = $(this).siblings('#employeeID').val();
     //console.log(empToRemove);
+}
+
+
+//function for adding to the monthly salary calculator
+function incrementMonthlySalary(annualSalary){
+    
 }

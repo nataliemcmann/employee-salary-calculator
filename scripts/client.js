@@ -23,12 +23,12 @@ function handleDataSubmit(){
 //declare employees array
 let employees = [
     {
-    firstName: 'Kyle',
-    lastName: 'Marmesh',
-    employeeID: '1234556',
-    jobTitle: 'Therapist',
-    annualSalary: 40000,
-    monthlySalary: 20000
+    firstName: 'Jane',
+    lastName: 'Doe',
+    employeeID: '123456',
+    jobTitle: 'Example',
+    annualSalary: 0,
+    monthlySalary: 0
     }
 ];
 
@@ -72,7 +72,7 @@ function renderTotalSalary(){
     $('#calculatedMonthlySalary').empty();
     //append new salary total
     $("#calculatedMonthlySalary").append(`
-    ${totalMonthlySalary}`);
+    ${totalMonthlySalary.toFixed(2)}`);
     if (totalMonthlySalary >= MaxTotalSalary){
         $("#calculatedMonthlySalary").css('background-color', '#e63946');
     } else {

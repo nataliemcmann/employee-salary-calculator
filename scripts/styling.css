@@ -4,6 +4,8 @@ body {
 }
 
 header {
+    padding-top:3%;
+    font-size:18px;
 }
 
 h1 {
@@ -14,7 +16,9 @@ h1 {
 main {
     background-color: #f1faee;
     text-align: center;
+    padding: 2%;
 }
+
 
 #inputFields {
     display: inline-block;
@@ -23,30 +27,47 @@ main {
     padding: 2%;
 }
 
+#dataSubmit {
+    background-color: #457b9d;
+    color: #f1faee;
+    font-size: 15px;
+}
+
 table {
     margin: auto;
     padding: 2%;
+    table-layout: fixed;
 }
 
 thead {
-    outline: #457b9d solid 1px;
-    background-color: #f1faee;
-    color: #1e3557;
-    margin: auto;
+    background-color: #457b9d;
+    color: #f1faee;
 }
 
 th {
-    outline: #457b9d solid 1px;
-    padding: 0.5%;
+    width: 17%;
+    padding: 1%;
 }
 
-td {
+tbody, td {
     outline: #457b9d solid 1px;
+    color: #1e3557;
+    padding: 1%;
+}
+
+.removeEmp {
+    background-color: #e63946;
+    color: #f1faee;
+    font-size: 15px;
 }
 
 h2 {
     text-align: center;
     color: #f1faee;
+}
+
+footer {
+    font-size:20px;
 }
 
 #calculatedMonthlySalary {

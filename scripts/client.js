@@ -29,6 +29,7 @@ let MaxTotalSalary = 20000;
 
 //render employee data to DOM
 function renderEmployeeData(){
+    //console.log(employees);
      //reset total salary
     totalMonthlySalary = 0;
     $('#employeeData').empty();
@@ -81,7 +82,7 @@ function processEmployeeInputData(){
     newEmployee.annualSalary = Number($('#annualSalary').val());
     newEmployee.monthlySalary = newEmployee.annualSalary/12;
     employees.push(newEmployee);
-    console.log(newEmployee.monthlySalary);
+    //console.log(newEmployee.monthlySalary);
 }
 
 //function for adding to the monthly salary calculator
@@ -115,5 +116,4 @@ function deleteEmployee(){
     employees = empToKeep;
     renderEmployeeData();
     //this automatically decrements the total
-
 }

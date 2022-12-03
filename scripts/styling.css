@@ -1,7 +1,58 @@
 body {
-    background-color: aquamarine;
+    background-color: #1e3557;
+    margin: 0;
 }
 
-* {
-    outline: darkblue solid 1px;
+header {
 }
+
+h1 {
+    text-align: center;
+    color: #f1faee;
+}
+
+main {
+    background-color: #f1faee;
+    text-align: center;
+}
+
+#inputFields {
+    display: inline-block;
+    background-color: #f1faee;
+    margin: auto;
+    padding: 2%;
+}
+
+table {
+    margin: auto;
+    padding: 2%;
+}
+
+thead {
+    outline: #457b9d solid 1px;
+    background-color: #f1faee;
+    color: #1e3557;
+    margin: auto;
+}
+
+th {
+    outline: #457b9d solid 1px;
+    padding: 0.5%;
+}
+
+td {
+    outline: #457b9d solid 1px;
+}
+
+h2 {
+    text-align: center;
+    color: #f1faee;
+}
+
+#calculatedMonthlySalary {
+    padding: 0.25%;
+}
+
+//* {
+//    outline: darkblue solid 1px;
+//}

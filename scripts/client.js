@@ -25,18 +25,10 @@ let employees = [
     {
     firstName: 'Kyle',
     lastName: 'Marmesh',
-    employeeID: 1234556,
+    employeeID: '1234556',
     jobTitle: 'Therapist',
     annualSalary: 40000,
-    monthlySalary: 3333.33
-    },
-    {
-    firstName: 'Tracy',
-    lastName: 'McMann',
-    employeeID: 78910,
-    jobTitle: 'Lead Mechanic',
-    annualSalary: 820000,
-    monthlySalary: 6833.33
+    monthlySalary: 20000
     }
 ];
 
@@ -54,7 +46,7 @@ function renderEmployeeData(){
     <tr>
         <td >${employees[i].firstName}</td>
         <td>${employees[i].lastName}</td>
-        <td id="employeeID">${employees[i].employeeID}</td>
+        <td><span id="employeeID">${employees[i].employeeID}</span></td>
         <td>${employees[i].jobTitle}</td>
         <td>$${employees[i].annualSalary}</td>
         <td><button class="removeEmp">Delete</button></td>
@@ -81,8 +73,10 @@ function renderTotalSalary(){
     //append new salary total
     $("#calculatedMonthlySalary").append(`
     ${totalMonthlySalary}`);
-    if (totalMonthlySalary > MaxTotalSalary){
-        $("#calculatedMonthlySalary").css('background-color', 'red');
+    if (totalMonthlySalary >= MaxTotalSalary){
+        $("#calculatedMonthlySalary").css('background-color', '#e63946');
+    } else {
+        $("#calculatedMonthlySalary").css('background-color', '#1e3557');
     }
 }
 
@@ -108,22 +102,27 @@ function incrementMonthlySalary(empMonthlySalary){
 
 //function to hide employee on the DOM when clicked
 function deleteEmployee(){
-    $(this).parent().parent().remove();
+    //$(this).parent().parent().remove();
     //attempt to remove employee from state as a stretch goal
-    //let empToRemove = $(this).siblings('#employeeID').val();
-    //console.log(empToRemove);
-    //stretch goal should removed their salary from the total
-    //decrementMonthlySalary();
-    renderTotalSalary();
+    //find parent of button
+    //let buttonParent = $(this).parent();
+    //was td, find siblings of td
+    //let buttonSiblings = $(buttonParent).siblings();
+    //was more td, couldn't find by td id, so wrapped my employee Id in a span
+    //let childOfSiblings = $(buttonSiblings).children();
+    //span is now a child, only td containing employee id has a child
+    //let empToRemove = $(childOfSiblings).text();
+    let empToRemove = $(this).parent().siblings().children().text();
+    //now make empty array of employees to keep
+    let empToKeep = [];
+    //iterate through current array and keep all not matching empToRemove
+    for (let employee of employees){
+        if (employee.employeeID !== empToRemove){
+            empToKeep.push(employee);
+        }
+    }
+    employees = empToKeep;
+    renderEmployeeData();
+    //this automatically decrements the total
+
 }
-
-
-
-//stretch goal: function for removing salary once employee is removed
-//function decrementMonthlySalary(empMonthlySalary){
-    //reset global variable
-    //take employee monthly salary
-    //add that to total monthly salary variable
-//    totalMonthlySalary -= empMonthlySalary;
-//}
-

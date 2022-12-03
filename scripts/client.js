@@ -21,16 +21,7 @@ function handleDataSubmit(){
 }
 
 //declare employees array
-let employees = [
-    {
-    firstName: 'Jane',
-    lastName: 'Doe',
-    employeeID: '123456',
-    jobTitle: 'Example',
-    annualSalary: 0,
-    monthlySalary: 0
-    }
-];
+let employees = [];
 
 //declare global variables
 let totalMonthlySalary = 0;

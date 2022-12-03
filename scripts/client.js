@@ -48,7 +48,7 @@ function renderEmployeeData(){
         <td>${employees[i].lastName}</td>
         <td id="employeeID">${employees[i].employeeID}</td>
         <td>${employees[i].jobTitle}</td>
-        <td>${employees[i].annualSalary}</td>
+        <td>$${employees[i].annualSalary}</td>
         <td><button class="removeEmp">Delete</button></td>
     </tr>
     `)
@@ -68,6 +68,7 @@ function processEmployeeInputData(){
 }
 
 function deleteEmployee(){
-    let empToRemove = $(this).siblings('#employeeID').val();
-    console.log(empToRemove);
+    $(this).parent().parent().remove();
+    //let empToRemove = $(this).siblings('#employeeID').val();
+    //console.log(empToRemove);
 }

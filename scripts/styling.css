@@ -1,3 +1,7 @@
 body {
     background-color: aquamarine;
 }
+
+* {
+    outline: darkblue solid 1px;
+}

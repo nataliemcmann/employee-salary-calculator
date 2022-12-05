@@ -10,7 +10,7 @@ function onReady(){
     console.log('GO!');
     //click handler for submitting employee inputs
     $('#dataSubmit').on('click', handleDataSubmit);
-    renderEmployeeData();
+    // renderEmployeeData(); this doesn't need to be in here because it is called in handleDataSubmit
     $('table').on('click', '.removeEmp', deleteEmployee)
 }
 
@@ -18,20 +18,20 @@ function onReady(){
 function handleDataSubmit(){
     processEmployeeInputData();
     renderEmployeeData();
+    renderTotalSalary();
+    clearFields();
 }
 
 //declare employees array
 let employees = [];
 
 //declare global variables
-let totalMonthlySalary = 0;
 let MaxTotalSalary = 20000;
 
 //render employee data to DOM
 function renderEmployeeData(){
     //console.log(employees);
      //reset total salary
-    totalMonthlySalary = 0;
     $('#employeeData').empty();
     for (let i = 0; i < employees.length; i++){
     $('#employeeData').append(`
@@ -46,8 +46,6 @@ function renderEmployeeData(){
     `);
     incrementMonthlySalary(employees[i].monthlySalary);
     }
-    renderTotalSalary();
-    clearFields();
 }
 
 //clear input fields
@@ -87,6 +85,7 @@ function processEmployeeInputData(){
 
 //function for adding to the monthly salary calculator
 function incrementMonthlySalary(empMonthlySalary){
+    let totalMonthlySalary = 0;
     //take employee monthly salary
     //add that to total monthly salary variable
     totalMonthlySalary += empMonthlySalary;
